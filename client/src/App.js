@@ -6,7 +6,7 @@ function App() {
   const [level, setLevel] = useState(1)
   const [price, setPrice] = useState(10)
 
-  const upgrade = () => {
+  function upgrade() {
     if (money >= price) {
       setMoney(p => p - price)
       setLevel(p => p * 2)

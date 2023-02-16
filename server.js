@@ -5,7 +5,7 @@ const path = require("path")
 
 const app = express()
 
-const PORT = config.get("PORT")
+const PORT = process.env.PORT || config.get("PORT")
 const staticPath = path.join(__dirname, "./client/build")
 
 app.use(express.static(staticPath))
