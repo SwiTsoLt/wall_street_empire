@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './App.css';
 
 function App() {
@@ -13,6 +13,17 @@ function App() {
       setPrice(p => p * 2)
     }
   }
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("wallLocalStorage"))
+    data?.money && setMoney(data?.money)
+    data?.level && setLevel(data?.level)
+    data?.price && setPrice(data?.price)
+  }, [])
+
+  useEffect(() => {
+    money && localStorage.setItem("wallLocalStorage", JSON.stringify({ money, level, price }))    
+  }, [money, level])
 
   return (
     <div className="App">
